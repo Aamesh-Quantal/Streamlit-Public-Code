@@ -28,7 +28,6 @@ if uploaded_files:
         save_path = os.path.join("temp", up.name)
         with open(save_path, "wb") as f:
             f.write(up.getbuffer())
-        st.write(f"✅ Saved upload to `{save_path}`")
         local_paths.append((up.name, save_path))
 
 # 2) Only once we have at least one image, ask for the email and setup Drive
@@ -68,7 +67,7 @@ if local_paths:
             input_id = folder_data[user_email]["INPUT"]
             for name, path in local_paths:
                 file_management.upload_file_to_folder(path, name, input_id)
-                st.write(f"📤 Uploaded `{name}` to Drive INPUT folder.")
+                st.write(f"📤 Uploaded `{name}` to Google Drive INPUT folder.")
 
             # 4) Process locally & offer “Save as …” for OUTPUT
             SAVE_DIR = "temp/processed"
@@ -103,7 +102,7 @@ if local_paths:
                     # upload to OUTPUT folder
                     output_id = folder_data[user_email]["OUTPUT"]
                     file_management.upload_file_to_folder(final_path, edited_filename, output_id)
-                    st.success(f"Uploaded `{edited_filename}` to Drive OUTPUT folder.")
+                    st.success(f"Uploaded `{edited_filename}` to Google Drive OUTPUT folder.")
                 
                 compare_result = compare(edited_filename, shopify_data)
                 st.write(compare_result)
