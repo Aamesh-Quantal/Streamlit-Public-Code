@@ -3,11 +3,10 @@ from googleapiclient.http import MediaFileUpload
 from google.oauth2 import service_account
 import json
 import os
-import toml
+import streamlit as st
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-config = toml.load("config.toml")
-SERVICE_ACCOUNT_FILE = config["DRIVE"]
+SERVICE_ACCOUNT_FILE = st.secrets["DRIVE"]
 
 JSON_PATH = "folder_id.json"
 

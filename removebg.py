@@ -1,11 +1,9 @@
 from PIL import Image
 import requests
 import io
-import os
-import toml
+import streamlit as st
 
-config = toml.load("config.toml")
-photoroom_key = config["PHOTOROOM"]["PHOTOROOM_KEY"]
+photoroom_key = st.secrets["PHOTOROOM"]["PHOTOROOM_KEY"]
 
 def remove_bg(image_path):
     """

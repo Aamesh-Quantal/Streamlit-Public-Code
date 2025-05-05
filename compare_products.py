@@ -1,12 +1,10 @@
 import google.generativeai as genai
 from graphql import get_shopify_data
-import os
-import toml
+import streamlit as st
 
 # Configure Gemini
-config = toml.load("config.toml")
 
-API_KEY = config["GEMINI"]["GEMINI_KEY"]
+API_KEY = st.secrets["GEMINI"]["GEMINI_KEY"]
 genai.configure(api_key=API_KEY)
 
 def compare(filename, shopify_data):

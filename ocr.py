@@ -1,13 +1,10 @@
 import google.generativeai as genai
 from PIL import Image
 from prompt import prompts
-import os
-import toml
-
-config = toml.load("config.toml")
+import streamlit as st
 
 #Gemini key
-API_KEY = config["GEMINI"]["GEMINI_KEY"]
+API_KEY = st.secrets["GEMINI"]["GEMINI_KEY"]
 
 genai.configure(api_key=API_KEY)
 def getText(image):
