@@ -2,9 +2,12 @@ import google.generativeai as genai
 from PIL import Image
 from prompt import prompts
 import os
+import toml
+
+config = toml.load("config.toml")
 
 #Gemini key
-API_KEY = os.getenv("GEMINI_KEY")
+API_KEY = config["GEMINI"]["GEMINI_KEY"]
 
 genai.configure(api_key=API_KEY)
 def getText(image):

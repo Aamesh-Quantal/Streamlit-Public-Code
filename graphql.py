@@ -1,11 +1,14 @@
 import requests
 import os
+import toml
+
+config = toml.load("config.toml")
 
 def get_shopify_data():
     # Credentials for store
-    shop_handle = os.getenv("SHOP_NAME")
-    access_token = os.getenv("ACCESS_TOKEN")
-    api_version  = os.getenv("API_VERSION")
+    shop_handle = config["SHOPIFY"]["SHOP_NAME"]
+    access_token = config["SHOPIFY"]["ACCESS_TOKEN"]
+    api_version  = config["SHOPIFY"]["API_VERSION"]
 
     url = f"https://{shop_handle}.myshopify.com/admin/api/{api_version}/graphql.json"
 

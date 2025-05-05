@@ -3,13 +3,11 @@ from googleapiclient.http import MediaFileUpload
 from google.oauth2 import service_account
 import json
 import os
-# from dotenv import load_dotenv
-
-# load_dotenv()
+import toml
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-GOOGLE_CREDENTIALS = os.getenv('DRIVE')
-SERVICE_ACCOUNT_FILE = json.loads(GOOGLE_CREDENTIALS)
+config = toml.load("config.toml")
+SERVICE_ACCOUNT_FILE = config["DRIVE"]
 
 JSON_PATH = "folder_id.json"
 
